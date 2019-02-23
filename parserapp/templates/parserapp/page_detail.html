@@ -5,7 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-    {{ object.url_address }}
-    {{ object.words_occurrences }}
+    <p>For the provided url: {{ object.url_address }}</p>
+
+    {% if not object.words_occurrences.items %}
+        <p>No keywords have been found</p>
+    {% else %}
+        <p>Following keywords have been found:</p>
+        <ul>
+            {% for key, value in object.words_occurrences.items %}
+                <li>Keyword {{key}} occurred {{value}} times</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 </body>
 </html>

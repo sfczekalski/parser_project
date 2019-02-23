@@ -8,7 +8,10 @@ class Page(models.Model):
     url_address = models.URLField()
 
     def split_keywords(self, str_keywords):
-        list_keywords = str_keywords.split(',')
+        try:
+            list_keywords = str_keywords.split(',')
+        except AttributeError:
+            return []
 
         return [x.strip() for x in list_keywords]
 
