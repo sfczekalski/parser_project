@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Parser app</title>
 </head>
 <body>
     <p>For the provided url: {{ object.url_address }}</p>
@@ -17,6 +17,12 @@
             {% endfor %}
         </ul>
     {% endif %}
+
+    <small>
+        Ready for a new search?
+        <a href="{% url 'url-create' %}">New one</a>
+    </small>
+
 
 </body>
 </html>
