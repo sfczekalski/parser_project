@@ -1,12 +1,10 @@
 from django.test import TestCase
 from .models import Page
-from django.test import Client
 
 
 class PageModelTests(TestCase):
 
     def setUp(self):
-        self.client = Client()
         self.test_page_empty = \
             Page.objects.create(url_address='https://django-mysql.readthedocs.io/en/latest/model_fields/json_field.html')
 
