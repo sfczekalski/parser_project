@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.test import Client
-from .models import Page
+from parserapp.models import Page
 
 
 class DetailPageTests(TestCase):
