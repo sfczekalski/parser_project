@@ -15,13 +15,14 @@ class Page(models.Model):
 
         return [x.strip() for x in list_keywords]
 
-    def get_keywords_from_webpage(self):
-        #url = 'http://www.kurshtml.edu.pl/html/wyrazy_kluczowe,body.html'
+    def get_page_content(self):
         response = requests.get(self.url_address)
         html = response.text
         page_content = BeautifulSoup(html, 'html.parser')
+        return page_content
 
-        all_meta_tags = page_content.find_all('meta')
+    def get_keywords_from_webpage(self):
+        all_meta_tags = self.get_page_content().find_all('meta')
         for tag in all_meta_tags:
             for key, value in tag.attrs.items():
                 if key.lower() == 'name' and value.lower() == 'keywords':
