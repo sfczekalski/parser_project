@@ -34,12 +34,14 @@ class Page(models.Model):
 
     def count_occurrences(self, my_list):
         occurrences = {}
+        tags = self.get_page_content().find_all('div')
 
         for word in my_list:
-            if word in occurrences:
-                occurrences[word] += 1
-            else:
-                occurrences[word] = 1
+            count = 0
+            for tag in tags:
+                text = tag.text
+                count += text.count(word)
+            occurrences[word] = count
 
         return occurrences
 
