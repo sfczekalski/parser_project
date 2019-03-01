@@ -10,11 +10,11 @@ class PageModelTests(TestCase):
             Page.objects.create(url_address='https://django-mysql.readthedocs.io/en/latest/model_fields/json_field.html')
 
     def test_ready_keywords(self):
-        self.assertEquals(self.test_page.words_occurrences, {'klucz': 1, 'Google': 1, 'SEO': 1, 'pozycjonowanie': 1})
+        self.assertEquals(self.test_page.words_occurrences, {'klucz': 19, 'Google': 7, 'SEO': 0, 'pozycjonowanie': 0})
 
     def test_counting_occurrences(self):
         self.assertEquals(self.test_page.count_occurrences(['klucz', 'Google', 'SEO', 'pozycjonowanie']),
-                                                           {'klucz': 1, 'Google': 1, 'SEO': 1, 'pozycjonowanie': 1})
+                                                           {'klucz': 19, 'Google': 7, 'SEO': 0, 'pozycjonowanie': 0})
 
     def test_splitting(self):
         self.assertEquals(self.test_page.split_keywords('klucz, Google, SEO, pozycjonowanie'),
